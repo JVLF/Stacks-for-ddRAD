@@ -6,7 +6,7 @@
 4. Limpiar las lecturas, quitando adaptadores y barcodes, así como eliminar las lecturas con mala calidad
 `process_radtags -P -p ./Tutorial/working/clean/lane2/ -b ./Tutorial/working/clean/lane2/lane2_barcodes -o ./Tutorial/working/clean/lane2/ddsamples/ --renz_1 nlaIII --renz_2 mluCI -i gzfastq -c -q -r --inline_index`
 [command instructions](http://catchenlab.life.illinois.edu/stacks/comp/process_radtags.php)
-5. Concatenar los 4 resultados por individuo
+5. Concatenar los 4 archivos por individuo de todos los resultados y poner un nombre significativo a cada individuo.
 
 > Hacer un archivo con los nombres de todos los archivos:
 `ls *.gz | sed -E 's/^(sample_)([ACGT\-]+).+/\2/' | uniq -d | cat > indv_samples`
