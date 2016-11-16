@@ -1,3 +1,5 @@
+# Demultiplexing and cleaning 
+
 1. Descomprimir archivo y pasarlo a la carpeta donde se trabajará:
 ` tar -xvf /path/to/file/lane1.tar -C /path/to/directory/ `
 2. Ver uno de los archivos *.fq que se han descargado
