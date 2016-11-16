@@ -16,7 +16,7 @@
 $ mkdir samples_concat`
 `for i in `cat indv_samples`; do cat sample_$i* > concat_samples_$i.fq.gz; done
 ```
-6. Cambiar el nombre de los archivos para que sea algo más significativo (por ejemplo: PP01 o SF22)
+Cambiar el nombre de los archivos para que sea algo más significativo (por ejemplo: PP01 o SF22)
 ```
 for ((i=01; i<=48; i++)); do mv concat_samples/*.fq.gz concat_samples/indv_$i.fq.gz; done
 ls | cat -n | while read n f; do mv "$f" "indv_$n.fq.gz"; done
