@@ -18,7 +18,7 @@ wc -l lib01_samp01.fq
 Now you can proceed to run the `ustacks` command. This command will take some time, so you can use `/usr/bin/time -v --output time.txt` to save the parameters of the run and compare between samples.
 For the `ustacks` be sure to enable the parameters you'll need. You have to specify the file type `-t fastq` , and make a directory to save the output, so you can specify the path `-o ./path/output_directory/` , then choose an id for the samples output `-i 1` , enable the Removal algorithm and the the Deleveraging algorithm (used for resolving over merged tags). There are other parameters you can change like the number of mismatches allowed between stacks, minimum coverage, or even the number of threads to use, but for more information see the manual:
 
-[*ustacks* Manual](http://catchenlab.life.illinois.edu/stacks/comp/ustacks.php)
+[**_ustacks_ Manual**](http://catchenlab.life.illinois.edu/stacks/comp/ustacks.php)
 
 In this example the complete command will be like this:
 
@@ -27,3 +27,24 @@ In this example the complete command will be like this:
 # This is using the defaults -m 2 -M 2 -N (M+2)
 ```
 
+To learn more about the meaning of each parameter see this Tutorial:
+[How do the major Stacks parameters control the de novo formation of stacks and loci?](http://catchenlab.life.illinois.edu/stacks/param_tut.php)
+
+To see what do the columns of the outputs mean see the [**Stacks Manual**](http://catchenlab.life.illinois.edu/stacks/manual/index.php#files) 
+
+To answer these questions you can run the command following each one.
+- How many repetitive reads are removed?
+  Raw reads that are placed in a stack are refered to as primary reads, if you substract the reads in the stack to the raw reads in the initial file, you'll have the total removed.
+  
+  ```
+  a=`grep -c "^@" ./samples/lib01_samp01.fq`
+  b=`grep -c "primary" ./stacks/lib01_samp01.tags.tsv`
+  c=`grep -c "secondary" ./stacks/lib01_samp01.tags.tsv`
+  expr $a - $b - $c
+  ```
+  
+- How many putative alleles are formed in each sample?
+- How many loci are formed from putative alleles?
+- How many of the secondary reads are aligned?
+  Raw reads that are set aside are referred to as secondary reads. `grep -c "secondary" ./stacks/lib01_samp01.tags.tsv`
+- How does the depth of coverage change after each stage of the algorithm?
